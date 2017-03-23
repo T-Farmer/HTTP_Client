@@ -6,8 +6,10 @@ get('http://dev.markitondemand.com/MODApis/Api/v2/InteractiveChart/json?paramete
 
   let error;
   if (statusCode !== 200){
-    error = newError(`Request failed.\n` + `Status Code: ${statusCode}`);
+    error = newError(`Request failed.\n` +
+      `Status Code: ${statusCode}`);
   } else if (!/^application\/json/.test(contentType)){
-    error = new Error(`Request Failed.\n`)
+    error = new Error(`Invalid content-type.\n` +
+      `Expected application/json but received ${contentType}`);
   }
 })
